@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>연습문제</title>
+    <style type="text/css">
+      .basic_tbst {
+        width: 600px;
+        margin: 0.666em 0;
+        border: 0;
+        border-collapse: collapse;
+        border-spacing: 0;
+        border-top: 1px solid #3c1b24;
+        border-bottom: 1px solid #b0b5ba;
+        background: #fff;
+      }
+      .basic_tbst th {
+        border-right: 1px solid #dadde0;
+        padding: 8px;
+      }
+      .basic_tbst th:last-child {
+        border-right: none;
+      }
+      .basic_tbst td {
+        padding: 10px;
+        border: 1px solid #dadde0;
+        border-width: 1px 1px 0 0;
+        text-align: center;
+      }
+      .basic_tbst td:last-child {
+        border-right: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>연습문제 1-1</h2>
+    <p>BMI를 계산하는 프로그램을 작성해 봅시다.</p>
+    <table class="basic_tbst">
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>저체중</th>
+          <th>정상</th>
+          <th>과체중</th>
+          <th>비만</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>수치</td>
+          <td>20미만</td>
+          <td>20~24</td>
+          <td>25~29</td>
+          <td>30이상</td>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+      var s2 = prompt("신장을 입력해주세요(cm - 숫자만 입력해주세요)");
+      var s3 = prompt("몸무게를 입력해주세요(kg - 숫자만 입력해주세요)");
+
+      var n2 = Number(s2) / 100;
+      var n3 = Number(s3);
+
+      var BMI = n3 / (n2 * n2);
+      var BMI2 = Math.round(BMI * 100) / 100;
+      document.write("BMI는 " + BMI2 + "입니다.");
+      console.log(BMI);
+    </script>
+  </body>
+</html>
