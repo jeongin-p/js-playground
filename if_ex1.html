@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if문 알아보자</title>
+</head>
+
+<body>
+    <h2>if 조건문</h2>
+    <p>입력받은 숫자가 홀수인지 짝수인지 알려주는 프로그램을 작성해봅시다.</p>
+    <script>
+        var str = prompt("숫자를 입력해주세요");
+        var num = Number(str);
+        var n = num % 2
+        if (n === 0) {
+            //뭐라구요?
+            console.log(num + '은 짝수입니다.');
+        }
+        else {
+            console.log(num + '은 홀수입니다.');
+        }
+    </script>
+</body>
+
+</html>
