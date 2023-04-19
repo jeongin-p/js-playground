@@ -1,18 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>객체공부</title>
-</head>
-
-<body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>객체공부 소수를 열거해보세요.</title>
+  </head>
+  <body>
+    <h1>1~10000사이의 소수를 화면에 출력하는 프로그램을 작성해보세요.</h1>
+    <div id="result"></div>
     <script>
+      var numbers = {};
+      numbers.all = [];
+      numbers.prime = [];
 
+      numbers.isPrime = function (num) {
+        for (var i = 2; i < num; i++) {
+          if (num % i == 0) {
+            return false;
+          }
+        }
+        return true;
+      };
+
+      numbers.addallnum = function (max_num) {
+        for (var i = 2; i <= max_num; i++) {
+          this.all.push(i);
+        }
+      };
+
+      numbers.addprime = function () {
+        for (var i = 0; i < this.all.length; i++) {
+          var n = this.all[i];
+          if (this.isPrime(n)) {
+            this.prime.push(n);
+          }
+        }
+      };
+
+      numbers.preview = function () {
+        var str = "";
+        str += "전체소수갯수" + this.prime.length + "<br />";
+        for (var i = 0; i < this.prime.length; i++) {
+          str += i + 1 + "번째 소수 : " + this.prime[i] + "<br />";
+        }
+        return str;
+      };
+      //   numbers.calcPrime = function () {
+      //     for (var i = 0; i < this.all.length; i++) {
+      //       var n = this.all[i];
+      //       if (this.isPrime(n)) {
+      //         this.prime.push(n);
+      //       }
+      //     }
+      //   };
+
+      //   numbers.getall = function () {
+      //     var ret = "";
+      //     ret += "전체소수의 갯수" + this.prime.length + "<br>";
+      //     for (var i = 0; i < this.prime.length; i++) {
+      //       ret += i + 1 + "번째 소수 : " + this.prime[i] + "<br/>";
+      //     }
+      //     return ret;
+      //   };
+
+      //   numbers.addallnum(10000);
+      //   numbers.calcPrime();
+      //   document.getElementById("result").innerHTML = numbers.getall(10000);
+      numbers.addallnum(100);
+      numbers.addprime();
+      document.getElementById("result").innerHTML = numbers.preview();
     </script>
-</body>
-
+  </body>
 </html>

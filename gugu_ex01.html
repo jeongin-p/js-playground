@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>몇번째 강의인지...하.....진도가 안나가네...</title>
+  </head>
+  <body>
+    <h1>구구단 1단~9단</h1>
+    <h2 class="title"></h2>
+    <div class="result"></div>
+    <script>
+      var result = [];
+      for (n = 2; n <= 9; n++) {
+        document.write("<h2>" + n + "단 <br/></h2>");
+        //계산
+        for (var i = 1; i <= length; i++) {
+          //계산결과를 배열에 저장
+          //console.log(i + "단");
+          result[i] = n * i;
+        }
+        for (var i = 1; i <= length; i++) {
+          var str = "";
+          str += i;
+          str += "*";
+          str += n;
+          str += " = ";
+          str += result[i] + "<br/>";
+          //console.log(i + "*" + n + " = " + i * n);
+          document.write(str);
+        }
+      }
+    </script>
+  </body>
+</html>
