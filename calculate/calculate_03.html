@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>계산기 구현준비</title>
+  </head>
+  <body>
+    <h1>객체 생성자 살펴보기</h1>
+    <script>
+      // var human = function (name, hp, pow) {
+      //   this.name = name;
+      //   this.hp = hp;
+      //   this.pow = pow;
+      //   this.attack = function (target) {
+      //     console.log(this.name + "이 " + target.name + "을(를) 공격했다.");
+      //     target.hp -= this.pow;
+      //   };
+
+      //   this.show = function () {
+      //     console.log(this.name, this.hp);
+      //   };
+      // };
+      // var p1 = new human("crong", 100, 10);
+      // var p2 = new human("jeongin", 1000, 10);
+      // var p3 = new human("jin", 500, 10);
+
+      var food = function (name, energy) {
+        this.name = name;
+        this.energy = energy;
+      };
+
+      var human = function (name, hp) {
+        this.name = name;
+        this.hp = hp;
+        this.eat = function (food) {
+          document.write(
+            this.name +
+              "이" +
+              food.name +
+              "를(을) 먹었다 <br/>" +
+              this.name +
+              (this.hp + food.energy)
+          );
+        };
+      };
+
+      var p1 = new human("jeongin", 100);
+      var f1 = new food("donut", 10);
+      p1.eat(f1);
+    </script>
+  </body>
+</html>
