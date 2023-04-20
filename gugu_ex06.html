@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>8? 7단?</title>
+  </head>
+  <body>
+    <h1>8, 7단만들기</h1>
+
+    <script>
+      var num1,
+        num2 = Number(prompt("숫자를 두개 입력하세요").split(","));
+      console.log(num1, num2);
+
+      gugudan = {};
+      gugudan.result = [];
+      gugudan.current = 0;
+
+      gugudan.calculate = function (n) {
+        this.current = n;
+        for (var i = 0; i < 9; i++) {
+          this.result[i] = this.current * (i + 1);
+        }
+      };
+      gugudan.print = function () {
+        document.write("<h2>" + this.current + "단</h2>");
+        for (var i = 0; i < 9; i++) {
+          document.write(
+            this.current + "*" + (i + 1) + " = " + this.result[i] + "<br/>"
+          );
+        }
+      };
+      function main() {
+        for (var i = 2; i <= 9; i++) {
+          gugudan.calculate(i);
+          gugudan.print();
+        }
+      }
+      main();
+    </script>
+  </body>
+</html>
