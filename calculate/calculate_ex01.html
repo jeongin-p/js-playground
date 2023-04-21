@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>계산기 만들어보기</title>
+  </head>
+  <body>
+    <h1>사칙연산 계산기 만들기</h1>
+    <input type="text" id="num1" placeholder="첫번째수" /> <br />
+    <input type="text" id="op" placeholder="연산기호" /> <br />
+    <input type="text" id="num2" placeholder="두번째수" /> <br />
+    <button onclick="calculate()">실행</button><br /><br /><br />
+
+    <div id="result">사칙연산 계산결과 나오는곳</div>
+    <script>
+      function calculate() {
+        var n1 = Number(document.getElementById("num1").value);
+        var n2 = Number(document.getElementById("num2").value);
+        var op = document.getElementById("op").value;
+
+        var result = document.getElementById("result");
+        var str = "";
+        if (op === "+") {
+          str += "더하기 : " + (n1 + n2) + "<br/>";
+        } else if (op === "-") {
+          str += "빼 기 : " + (n1 - n2) + "<br/>";
+        } else if (op === "*") {
+          str += "곱하기 : " + n1 * n2 + "<br/>";
+        } else if (op === "/") {
+          str += "나누기 : " + n1 / n2 + "<br/>";
+        } else {
+          str += "사칙연산 기호만 입력가능합니다.";
+        }
+
+        result.innerHTML = str;
+      }
+
+      //   var calculate = function () {
+      //     console.log(calcnum);
+      //     document.getElementById("result").innerHTML = "결과값나오기";
+      //   };
+    </script>
+  </body>
+</html>
