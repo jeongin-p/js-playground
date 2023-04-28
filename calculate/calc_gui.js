@@ -102,13 +102,18 @@ var clickNumbers = function (evnet) {
   }
 };
 
+// '=' 버튼의 핸들러 함수
 var showResult = function (evnet) {
   input.prepareCalculate();
+
   var result = input.getValue();
+  console.log("show", result);
+
   while (!input.isempty()) {
     var op = input.getOperator();
     var second = input.getValue();
     result = calculator.calculate(result, second, op);
+    console.log("show2", op, second, result);
   }
   output.print(result);
   input.removeAll(result);
