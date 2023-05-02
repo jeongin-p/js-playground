@@ -1,78 +1,103 @@
-var word1 = document.getElementById("word1");
-var word2 = document.getElementById("word2");
-var check = document.getElementById("check");
+// html elements
+var word1 = document.getElementById("word1"); //answer
+var word2 = document.getElementById("word2"); //buttons
+var check = document.getElementById("check"); //result
+var progress = document.getElementById("progress"); //progress check
 
-var words =
+// game objects
+var game = { btns: [], maxPlay: 3 };
+game.words =
   "apple,linux,javascript,tutorial,codesquad,baby,girlfriend,legend".split(",");
 
-var game = {};
-game.choice = function () {
-  var idx = Math.floor(Math.random() * words.length);
-  return words[idx];
+// choose 1 word from words;
+game.choose = function () {
+  var idx = Math.floor(Math.random() * this.words.length);
+  this.answer = this.words[idx];
+  this.letters = this.answer.split("");
+  word1.innerHTML = this.answer;
 };
 
-var answer = game.choice();
-word1.innerHTML = answer;
-game.word = answer.split("");
-game.btns = [];
+game.addButtons = function () {
+  for (var i = 0; i < this.letters.length; i++) {
+    var btn = document.createElement("button");
+    btn.innerHTML = this.letters[i];
+    word2.appendChild(btn);
+    this.btns.push(btn);
+  }
+};
 
 game.updateDisplay = function () {
-  if (answer === game.word.join("")) {
+  var gameStr = this.letters.join("");
+  if (this.answer === gameStr) {
     check.innerHTML = "일치합니다";
   } else {
     check.innerHTML = "일치하지 않습니다.";
   }
 };
 
-for (var i = 0; i < answer.length; i++) {
-  var btn = document.createElement("button");
-  btn.innerHTML = answer[i];
-  word2.appendChild(btn);
-  game.btns.push(btn);
-}
+game.init = function () {
+  game.choose();
+  game.addButtons();
+  game.updateDisplay();
+};
+
+game.init();
 
 game.copyBtnText = function () {
-  for (var i = 0; i < this.word.length; i++) {
-    this.btns[i].innerHTML = this.word[i];
+  for (var i = 0; i < this.letters.length; i++) {
+    this.btns[i].innerHTML = this.letters[i];
   }
 };
 
-var swap = function (event) {
+game.swap = function () {
   var temp = [];
-  while (game.word.length != 0) {
-    var s = game.word.pop();
+  // copy and swap
+  while (game.letters.length != 0) {
+    var s = game.letters.pop();
     temp.push(s);
   }
 
-  game.word = temp;
+  game.letters = temp;
   game.copyBtnText();
   game.updateDisplay();
 };
 
-var rshift = function (event) {
-  var s = game.word.pop();
-  game.word.unshift(s);
+game.rshift = function () {
+  var s = game.letters.pop();
+  game.letters.unshift(s);
   game.copyBtnText();
   game.updateDisplay();
 };
 
-var lshift = function (event) {
-  var s = game.word.shift();
-  game.word.push(s);
+game.lshift = function () {
+  var s = game.letters.shift();
+  game.letters.push(s);
   game.copyBtnText();
   game.updateDisplay();
 };
+// event handler for swap button
+var swap = function () {
+  game.swap();
+};
 
-//셔플
+var rshift = function () {
+  game.rshift();
+};
 
-var toggle = Math.floor(Math.random() * 2) === 0; //true, false 50%확률임
+var lshift = function () {
+  game.lshift();
+};
 
-if (toggle) {
-  swap();
-}
+//shuffle
+game.shuffle = function () {
+  var toggle = Math.floor(Math.random() * 2) === 0; //true, false 50%확률임
+  if (toggle) {
+    swap();
+  }
 
-var n = Math.floor(Math.random() * answer.length);
-
-for (var i = 0; i < n; i++) {
-  rshift();
-}
+  var n = Math.floor(Math.random() * game.answer.length);
+  for (var i = 0; i < n; i++) {
+    rshift();
+  }
+};
+game.shuffle();
